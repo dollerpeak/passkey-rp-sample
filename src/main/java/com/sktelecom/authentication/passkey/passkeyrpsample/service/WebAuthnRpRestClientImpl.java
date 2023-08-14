@@ -107,11 +107,12 @@ public class WebAuthnRpRestClientImpl implements WebAuthnRpRestClient {
     	
     	HttpHeaders headers = new HttpHeaders();
 		String BEARER_PREFIX = "Bearer ";
-		String accessToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJodHRwczovL3N0Zy1vYXV0aDIuZGFwbGF0Zm9ybS5rciIsInN1YiI6InN0Zy50YW5nby5za3RlbGVjb20uY29tIiwiaWF0IjoxNjkxNzM0OTI0LCJqdGkiOiIwOTBjOWRmMS02NGRlLTQ0ZGEtOTE3Mi1kODg4ZGRlM2YwNTQiLCJjbGllbnRfaWQiOiJzdGcudGFuZ28uc2t0ZWxlY29tLmNvbSIsInNjb3BlIjoicGFzc2tleTpycCIsImF1ZCI6Imh0dHBzOi8vc3RnLXBhc3NrZXkuZGFwbGF0Zm9ybS5rciIsImV4cCI6MTY5MTc0MjEyNH0.Foi6_U1sLJxL7TU7Y2-kSh1WqS-ozq5mVYzyJnGO_G1gh4fmqawZed2EeP74Qs4IGa0yo7iI__Q2mfuuzjz8n4qJv-Y1JwrO183HHBchda8Zfu69_OAXeqGDyU8mrV20zwNoGJKLlnuDCLJLEBCgHFoopTxo5FcJZQOsHOza1U0f4KWjUuDtO2iEWf2j3ftw3kJx5FKQ9XHJiWwXaM0oDjq09JE42stZbKXkjem2QbKTW2a91WlmPCZ-K5615--P9OYbrp78hsd79OLeqQu4y78qcBhnTLDmJxSd9Cucmqat2LkNaPeaFkj8j4gVpamGgDGpCbtt-5kHiuWnrvP04A";
+		String accessToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJodHRwczovL3N0Zy1vYXV0aDIuZGFwbGF0Zm9ybS5rciIsInN1YiI6InN0Zy50YW5nby5za3RlbGVjb20uY29tIiwiaWF0IjoxNjkyMDA4MTEzLCJqdGkiOiJkYTA1MjUyMi05YTZhLTRhNGUtODNkMS0wZTE4YTMxZDNlOGEiLCJjbGllbnRfaWQiOiJzdGcudGFuZ28uc2t0ZWxlY29tLmNvbSIsInNjb3BlIjoicGFzc2tleTpycCIsImF1ZCI6Imh0dHBzOi8vc3RnLXBhc3NrZXkuZGFwbGF0Zm9ybS5rciIsImV4cCI6MTY5MjAxNTMxM30.bH-PNWLCXQaTRqR_V0toIxnt1fHp_1nXqjJdqdbJ-rXZKxrNYfHxGfxtRdg_fabIHtmRgbDToROp4x0NCC5-TLdnVoC4dmjNIhWEVaPsW1Xt4LT8d2KJvg5FqX08eTqQB7f8e3oEPbxLP82EToP1Rvyc2-XZ2Kc1AUeORbYc4OQYlyyM2OTabf0DTtE6JnFYm2drcZjXOyFCU_w1TTlF1_4aRH0kNNhNCuLpaWJ60uDfVKk3YrESK0I8GXJ6iUw9tBiCmllzo_in_ntNVh9jWoRIzR1lxbhgdh16iUbe0FUertvWdTHpJPsM3SBzBnBUZDXybjH2Hht2YF4qjwIC0w";
 		headers.set(HttpHeaders.AUTHORIZATION, BEARER_PREFIX + accessToken);		
 		String WEBAUTHN_RP_ID = "X-WebAuthentication-RpId";
 		headers.set(WEBAUTHN_RP_ID, "stg.tango.sktelecom.com");
 		log.info("==> headers = " + headers);
+		log.info("==> request = " + request.toString());
 		
 		ResponseEntity<ServerResponseDto<ChallengeDto>> response =
 	            restTemplate.exchange(registrationRequestUrl, HttpMethod.POST, new HttpEntity<>(request, headers),
